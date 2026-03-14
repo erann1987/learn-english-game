@@ -173,11 +173,11 @@
     quizAnswered = false;
     quizFeedback.classList.add("hidden");
     var entry = quizWords[quizIndex];
+    var useText = currentCategory.quizStyle === "text";
 
-    // Hide the prompt emoji so it doesn't give away the answer
     quizEmoji.textContent = "🎧";
 
-    // Build 4 emoji choices from the SAME category
+    // Build 4 choices from the SAME category
     var sameCatWords = currentCategory.words.filter(function (w) {
       return w.word !== entry.word;
     });
@@ -187,8 +187,8 @@
     quizChoices.innerHTML = "";
     choiceEntries.forEach(function (choice) {
       var btn = document.createElement("button");
-      btn.className = "quiz-choice-btn quiz-choice-emoji";
-      btn.textContent = choice.emoji;
+      btn.className = "quiz-choice-btn" + (useText ? "" : " quiz-choice-emoji");
+      btn.textContent = useText ? choice.translation : choice.emoji;
       btn.setAttribute("data-word", choice.word);
       btn.addEventListener("click", function () {
         handleQuizAnswer(btn, choice.word, entry.word, entry.emoji, entry.translation);

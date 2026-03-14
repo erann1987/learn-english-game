@@ -123,6 +123,7 @@ const VOCABULARY = [
     category: "משפטים",
     categoryEn: "Common Phrases",
     emoji: "💬",
+    quizStyle: "text",
     words: [
       { word: "hello", translation: "שלום", example: "Hello! How are you?", emoji: "👋" },
       { word: "goodbye", translation: "להתראות", example: "Goodbye! See you tomorrow!", emoji: "👋" },
