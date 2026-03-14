@@ -2,13 +2,12 @@
 (function () {
   "use strict";
 
-  // ---- Level data map ----
-  var LEVELS = {
-    1: VOCABULARY,
-    2: VOCABULARY_L2
-  };
   var currentLevel = null;
   var currentVocabulary = null;
+
+  function getVocabulary(level) {
+    return level === 2 ? VOCABULARY_L2 : VOCABULARY;
+  }
 
   // ---- State ----
   var currentCategory = null;
@@ -64,7 +63,7 @@
   // ---- Level selection ----
   function selectLevel(level) {
     currentLevel = level;
-    currentVocabulary = LEVELS[level];
+    currentVocabulary = getVocabulary(level);
     renderCategories();
     showScreen("categories");
   }
