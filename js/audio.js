@@ -6,44 +6,49 @@ var Audio = (function () {
   "use strict";
 
   var synth = window.speechSynthesis;
-  var RATE = 0.65;
+  var RATE = 0.8;
   var PITCH = 1.0;
   var audioCtx = null;
-  var preferredVoice = null;
+  var enVoice = null;
+  var heVoice = null;
+  var voicesReady = false;
 
-  // Pick the best available English voice
-  function findBestVoice() {
-    if (preferredVoice) return preferredVoice;
-    var voices = synth ? synth.getVoices() : [];
-    // Prefer high-quality voices in order
-    var preferred = [
-      "Samantha",         // macOS/iOS — natural female
-      "Karen",            // macOS — Australian English
-      "Daniel",           // macOS — British English
-      "Google US English", // Chrome
-      "Google UK English Female"
-    ];
-    for (var i = 0; i < preferred.length; i++) {
+  function loadVoices() {
+    if (!synth) return;
+    var voices = synth.getVoices();
+    if (!voices.length) return;
+    voicesReady = true;
+
+    // Find best English voice
+    var enNames = ["Samantha", "Google US English", "Google UK English Female", "Karen", "Daniel"];
+    for (var i = 0; i < enNames.length; i++) {
       for (var j = 0; j < voices.length; j++) {
-        if (voices[j].name.indexOf(preferred[i]) !== -1) {
-          preferredVoice = voices[j];
-          return preferredVoice;
+        if (voices[j].name.indexOf(enNames[i]) !== -1 && voices[j].lang.indexOf("en") === 0) {
+          enVoice = voices[j];
+          break;
         }
       }
+      if (enVoice) break;
     }
-    // Fallback: any en-US voice
-    for (var k = 0; k < voices.length; k++) {
-      if (voices[k].lang.indexOf("en") === 0) {
-        preferredVoice = voices[k];
-        return preferredVoice;
+    // Fallback: any English voice
+    if (!enVoice) {
+      for (var k = 0; k < voices.length; k++) {
+        if (voices[k].lang.indexOf("en") === 0) { enVoice = voices[k]; break; }
       }
     }
-    return null;
+
+    // Find Hebrew voice
+    for (var m = 0; m < voices.length; m++) {
+      if (voices[m].lang.indexOf("he") === 0) { heVoice = voices[m]; break; }
+    }
   }
 
-  // Voices load asynchronously in some browsers
-  if (synth && synth.onvoiceschanged !== undefined) {
-    synth.onvoiceschanged = findBestVoice;
+  // Voices load async in Chrome/Android
+  if (synth) {
+    loadVoices();
+    if (synth.onvoiceschanged !== undefined) {
+      synth.onvoiceschanged = loadVoices;
+    }
   }
 
   function getCtx() {
@@ -51,41 +56,33 @@ var Audio = (function () {
     return audioCtx;
   }
 
-  function speak(text, lang) {
+  function speak(text, lang, voice) {
     if (!synth) return Promise.resolve();
     synth.cancel();
 
     return new Promise(function (resolve) {
-      // Small delay after cancel to prevent clipping
       setTimeout(function () {
+        // Reload voices if they weren't ready before
+        if (!voicesReady) loadVoices();
+
         var utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = lang || "en-US";
+        utterance.lang = lang;
+        if (voice) utterance.voice = voice;
         utterance.rate = RATE;
         utterance.pitch = PITCH;
-
-        // Use best voice for English
-        if (lang === "en-US" || !lang) {
-          var voice = findBestVoice();
-          if (voice) {
-            utterance.voice = voice;
-            // Re-apply rate after setting voice (some voices reset it)
-            utterance.rate = RATE;
-          }
-        }
-
         utterance.onend = resolve;
         utterance.onerror = resolve;
         synth.speak(utterance);
-      }, 50);
+      }, 60);
     });
   }
 
   function speakEnglish(text) {
-    return speak(text, "en-US");
+    return speak(text, "en-US", enVoice);
   }
 
   function speakHebrew(text) {
-    return speak(text, "he-IL");
+    return speak(text, "he-IL", heVoice);
   }
 
   function stop() {
