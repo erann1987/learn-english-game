@@ -111,15 +111,32 @@ var Audio = (function () {
         var utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = lang;
         if (voice) utterance.voice = voice;
-        // Use slightly faster rate for sentences, slower for individual words
         utterance.rate = (lang.indexOf("en") === 0 && !isSentence(text)) ? RATE_WORD : RATE_SENTENCE;
         utterance.pitch = PITCH;
         utterance.volume = 1.0;
         utterance.onend = resolve;
         utterance.onerror = resolve;
+
+        // Chrome/Safari bug: synth gets stuck after many cancel/speak cycles.
+        // Workaround: pause+resume keeps the engine alive during long utterances.
         synth.speak(utterance);
+        startKeepAlive();
       }, 60);
     });
+  }
+
+  // Periodically nudge speechSynthesis so it doesn't freeze
+  var keepAliveTimer = null;
+  function startKeepAlive() {
+    stopKeepAlive();
+    keepAliveTimer = setInterval(function () {
+      if (!synth.speaking) { stopKeepAlive(); return; }
+      synth.pause();
+      synth.resume();
+    }, 5000);
+  }
+  function stopKeepAlive() {
+    if (keepAliveTimer) { clearInterval(keepAliveTimer); keepAliveTimer = null; }
   }
 
   function speakEnglish(text) {
@@ -131,6 +148,7 @@ var Audio = (function () {
   }
 
   function stop() {
+    stopKeepAlive();
     if (synth) synth.cancel();
   }
 
