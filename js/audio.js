@@ -6,12 +6,41 @@ var Audio = (function () {
   "use strict";
 
   var synth = window.speechSynthesis;
-  var RATE = 0.8;
+  var RATE_WORD = 0.85;
+  var RATE_SENTENCE = 0.9;
   var PITCH = 1.0;
   var audioCtx = null;
   var enVoice = null;
   var heVoice = null;
   var voicesReady = false;
+
+  // Quality tiers for English voice selection (highest quality first)
+  var EN_VOICE_PREFS = [
+    // Apple Premium/Enhanced voices (best quality, most natural)
+    "Ava (Premium)", "Zoe (Premium)", "Allison (Premium)",
+    "Ava (Enhanced)", "Samantha (Enhanced)", "Allison (Enhanced)",
+    "Zoe (Enhanced)", "Evan (Enhanced)", "Tom (Enhanced)",
+    // Google network voices (good quality on Chrome)
+    "Google US English", "Google UK English Female",
+    // Apple default voices
+    "Ava", "Samantha", "Alex",
+    // Microsoft online voices (Windows/Edge)
+    "Microsoft Aria Online", "Microsoft Jenny Online",
+    "Microsoft Zira Online", "Microsoft Mark Online",
+    // Other common voices
+    "Karen", "Daniel"
+  ];
+
+  function pickBestVoice(voices, prefs) {
+    for (var i = 0; i < prefs.length; i++) {
+      for (var j = 0; j < voices.length; j++) {
+        if (voices[j].name.indexOf(prefs[i]) !== -1) {
+          return voices[j];
+        }
+      }
+    }
+    return null;
+  }
 
   function loadVoices() {
     if (!synth) return;
@@ -19,28 +48,28 @@ var Audio = (function () {
     if (!voices.length) return;
     voicesReady = true;
 
-    // Find best English voice
-    var enNames = ["Samantha", "Google US English", "Google UK English Female", "Karen", "Daniel"];
-    for (var i = 0; i < enNames.length; i++) {
-      for (var j = 0; j < voices.length; j++) {
-        if (voices[j].name.indexOf(enNames[i]) !== -1 && voices[j].lang.indexOf("en") === 0) {
-          enVoice = voices[j];
-          break;
-        }
-      }
-      if (enVoice) break;
-    }
-    // Fallback: any English voice
-    if (!enVoice) {
-      for (var k = 0; k < voices.length; k++) {
-        if (voices[k].lang.indexOf("en") === 0) { enVoice = voices[k]; break; }
-      }
+    // Filter to English voices only (en-US, en-GB, en-AU, etc.)
+    var enVoices = [];
+    for (var i = 0; i < voices.length; i++) {
+      if (voices[i].lang.indexOf("en") === 0) enVoices.push(voices[i]);
     }
 
-    // Find Hebrew voice
-    for (var m = 0; m < voices.length; m++) {
-      if (voices[m].lang.indexOf("he") === 0) { heVoice = voices[m]; break; }
+    enVoice = pickBestVoice(enVoices, EN_VOICE_PREFS);
+    // Fallback: any en-US voice, then any English voice
+    if (!enVoice) {
+      for (var k = 0; k < enVoices.length; k++) {
+        if (enVoices[k].lang === "en-US") { enVoice = enVoices[k]; break; }
+      }
     }
+    if (!enVoice && enVoices.length) enVoice = enVoices[0];
+
+    // Find Hebrew voice (prefer enhanced)
+    var heVoices = [];
+    for (var m = 0; m < voices.length; m++) {
+      if (voices[m].lang.indexOf("he") === 0) heVoices.push(voices[m]);
+    }
+    heVoice = pickBestVoice(heVoices, ["Premium", "Enhanced"]);
+    if (!heVoice && heVoices.length) heVoice = heVoices[0];
   }
 
   // Voices load async in Chrome/Android
@@ -56,20 +85,25 @@ var Audio = (function () {
     return audioCtx;
   }
 
+  function isSentence(text) {
+    return text.indexOf(" ") !== -1 && text.length > 15;
+  }
+
   function speak(text, lang, voice) {
     if (!synth) return Promise.resolve();
     synth.cancel();
 
     return new Promise(function (resolve) {
       setTimeout(function () {
-        // Reload voices if they weren't ready before
         if (!voicesReady) loadVoices();
 
         var utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = lang;
         if (voice) utterance.voice = voice;
-        utterance.rate = RATE;
+        // Use slightly faster rate for sentences, slower for individual words
+        utterance.rate = (lang.indexOf("en") === 0 && !isSentence(text)) ? RATE_WORD : RATE_SENTENCE;
         utterance.pitch = PITCH;
+        utterance.volume = 1.0;
         utterance.onend = resolve;
         utterance.onerror = resolve;
         synth.speak(utterance);
