@@ -22,12 +22,12 @@ const VOCABULARY = [
       { word: "white", translation: "לבן", example: "Snow is white.", emoji: "⚪" },
       { word: "brown", translation: "חום", example: "The dog is brown.", emoji: "🟤" },
       { word: "gray", translation: "אפור", example: "The elephant is gray.", emoji: "🩶" },
-      { word: "gold", translation: "זהב", example: "The crown is gold.", emoji: "🥇" },
-      { word: "silver", translation: "כסף", example: "The ring is silver.", emoji: "🥈" },
-      { word: "light blue", translation: "תכלת", example: "The sea is light blue.", emoji: "🫧" },
+      { word: "gold", translation: "זהב", example: "The crown is gold.", emoji: "gold" },
+      { word: "silver", translation: "כסף", example: "The ring is silver.", emoji: "silver" },
+      { word: "light blue", translation: "תכלת", example: "The sea is light blue.", emoji: "light blue" },
       { word: "dark green", translation: "ירוק כהה", example: "The tree is dark green.", emoji: "🌲" },
-      { word: "cream", translation: "שמנת", example: "The wall is cream.", emoji: "🤍" },
-      { word: "turquoise", translation: "טורקיז", example: "The water is turquoise.", emoji: "💎" }
+      { word: "cream", translation: "שמנת", example: "The wall is cream.", emoji: "cream" },
+      { word: "turquoise", translation: "טורקיז", example: "The water is turquoise.", emoji: "turquoise" }
     ]
   },
   {
@@ -112,7 +112,7 @@ const VOCABULARY = [
     categoryEn: "Body Parts",
     emoji: "🧍",
     words: [
-      { word: "head", translation: "ראש", example: "I wear a hat on my head.", emoji: "🗣️" },
+      { word: "head", translation: "ראש", example: "I wear a hat on my head.", emoji: "head" },
       { word: "hand", translation: "יד", example: "I wave my hand.", emoji: "✋" },
       { word: "eye", translation: "עין", example: "I see with my eye.", emoji: "👁️" },
       { word: "ear", translation: "אוזן", example: "I hear with my ear.", emoji: "👂" },
@@ -124,7 +124,7 @@ const VOCABULARY = [
       { word: "leg", translation: "רגל", example: "I run with my legs.", emoji: "🦵" },
       { word: "finger", translation: "אצבע", example: "I point with my finger.", emoji: "☝️" },
       { word: "hair", translation: "שיער", example: "My hair is brown.", emoji: "💇" },
-      { word: "back", translation: "גב", example: "My back is strong.", emoji: "🧍" },
+      { word: "back", translation: "גב", example: "My back is strong.", emoji: "back" },
       { word: "neck", translation: "צוואר", example: "I wear a scarf on my neck.", emoji: "🧣" },
       { word: "knee", translation: "ברך", example: "I bend my knee.", emoji: "🦵" },
       { word: "shoulder", translation: "כתף", example: "I tap your shoulder.", emoji: "🤷" },
@@ -284,7 +284,7 @@ const VOCABULARY = [
       { word: "star", translation: "כוכב", example: "I drew a star.", emoji: "⭐" },
       { word: "heart", translation: "לב", example: "I drew a heart for mom.", emoji: "❤️" },
       { word: "diamond", translation: "מעוין", example: "The kite is a diamond shape.", emoji: "💎" },
-      { word: "rectangle", translation: "מלבן", example: "The door is a rectangle.", emoji: "▬" },
+      { word: "rectangle", translation: "מלבן", example: "The door is a rectangle.", emoji: "▭" },
       { word: "oval", translation: "אליפסה", example: "The egg is an oval shape.", emoji: "🥚" },
       { word: "cross", translation: "צלב", example: "I draw a cross.", emoji: "✝️" },
       { word: "arrow", translation: "חץ", example: "The arrow points right.", emoji: "➡️" },

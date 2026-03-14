@@ -8,9 +8,9 @@ const VOCABULARY_L2 = [
     categoryEn: "More Colors",
     emoji: "🎨",
     words: [
-      { word: "silver", translation: "כסוף", example: "The silver ring is shiny.", emoji: "🪙" },
-      { word: "gold", translation: "זהב", example: "The gold crown belongs to the king.", emoji: "👑" },
-      { word: "turquoise", translation: "טורקיז", example: "The sea is turquoise near the beach.", emoji: "🏖️" },
+      { word: "silver", translation: "כסוף", example: "The silver ring is shiny.", emoji: "silver" },
+      { word: "gold", translation: "זהב", example: "The gold crown belongs to the king.", emoji: "gold" },
+      { word: "turquoise", translation: "טורקיז", example: "The sea is turquoise near the beach.", emoji: "turquoise" },
       { word: "gray", translation: "אפור", example: "The elephant is gray and big.", emoji: "🐘" },
       { word: "beige", translation: "בז'", example: "The sand on the beach is beige.", emoji: "🏝️" },
       { word: "maroon", translation: "בורדו", example: "She wore a maroon scarf.", emoji: "🧣" },
