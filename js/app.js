@@ -201,8 +201,9 @@
     var useText = currentCategory.quizStyle === "text";
 
     quizEmoji.textContent = "🎧";
-    quizWordEn.classList.add("hidden");
-    quizWordEn.textContent = "";
+    // Show the English word from the start
+    quizWordEn.textContent = entry.word;
+    quizWordEn.classList.remove("hidden");
 
     // Build 4 choices from the SAME category
     var sameCatWords = currentCategory.words.filter(function (w) {
@@ -214,8 +215,16 @@
     quizChoices.innerHTML = "";
     choiceEntries.forEach(function (choice) {
       var btn = document.createElement("button");
-      btn.className = "quiz-choice-btn" + (useText ? "" : " quiz-choice-emoji");
-      btn.textContent = useText ? choice.translation : choice.emoji;
+      if (useText) {
+        btn.className = "quiz-choice-btn";
+        btn.textContent = choice.translation;
+      } else {
+        // Emoji + Hebrew label
+        btn.className = "quiz-choice-btn quiz-choice-emoji";
+        btn.innerHTML =
+          '<span class="choice-emoji">' + choice.emoji + '</span>' +
+          '<span class="choice-label">' + choice.translation + '</span>';
+      }
       btn.setAttribute("data-word", choice.word);
       btn.addEventListener("click", function () {
         handleQuizAnswer(btn, choice.word, entry.word, entry.emoji, entry.translation);
@@ -228,10 +237,6 @@
   }
 
   function handleQuizAnswer(btn, chosenWord, correctWord, correctEmoji, correctHe) {
-    // Reveal the English word on any answer
-    quizWordEn.textContent = correctWord;
-    quizWordEn.classList.remove("hidden");
-
     if (chosenWord === correctWord) {
       // Correct! Lock the question and move on
       quizAnswered = true;

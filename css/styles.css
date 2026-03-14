@@ -510,9 +510,24 @@ h2 {
 }
 
 .quiz-choice-emoji {
-  font-size: 2.5rem;
+  font-size: 1.3rem;
   padding: 0.8rem;
   min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.choice-emoji {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.choice-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
 }
 
 .quiz-feedback {
