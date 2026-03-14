@@ -6,7 +6,7 @@ var Audio = (function () {
   "use strict";
 
   var synth = window.speechSynthesis;
-  var RATE = 0.7;
+  var RATE = 0.65;
   var PITCH = 1.0;
   var audioCtx = null;
   var preferredVoice = null;
@@ -52,23 +52,31 @@ var Audio = (function () {
   }
 
   function speak(text, lang) {
-    if (!synth) return;
+    if (!synth) return Promise.resolve();
     synth.cancel();
-    var utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = lang || "en-US";
-    utterance.rate = RATE;
-    utterance.pitch = PITCH;
-
-    // Use best voice for English
-    if (lang === "en-US" || !lang) {
-      var voice = findBestVoice();
-      if (voice) utterance.voice = voice;
-    }
 
     return new Promise(function (resolve) {
-      utterance.onend = resolve;
-      utterance.onerror = resolve;
-      synth.speak(utterance);
+      // Small delay after cancel to prevent clipping
+      setTimeout(function () {
+        var utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang || "en-US";
+        utterance.rate = RATE;
+        utterance.pitch = PITCH;
+
+        // Use best voice for English
+        if (lang === "en-US" || !lang) {
+          var voice = findBestVoice();
+          if (voice) {
+            utterance.voice = voice;
+            // Re-apply rate after setting voice (some voices reset it)
+            utterance.rate = RATE;
+          }
+        }
+
+        utterance.onend = resolve;
+        utterance.onerror = resolve;
+        synth.speak(utterance);
+      }, 50);
     });
   }
 
