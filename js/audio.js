@@ -82,8 +82,19 @@ var Audio = (function () {
 
   function getCtx() {
     if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    // iOS Safari suspends AudioContext until resumed inside a user gesture
+    if (audioCtx.state === "suspended") audioCtx.resume();
     return audioCtx;
   }
+
+  // Unlock AudioContext on first user tap (iOS requirement)
+  function unlockAudio() {
+    getCtx();
+    document.removeEventListener("touchstart", unlockAudio);
+    document.removeEventListener("click", unlockAudio);
+  }
+  document.addEventListener("touchstart", unlockAudio, { once: true });
+  document.addEventListener("click", unlockAudio, { once: true });
 
   function isSentence(text) {
     return text.indexOf(" ") !== -1 && text.length > 15;
