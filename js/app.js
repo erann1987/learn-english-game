@@ -65,7 +65,10 @@
   // ---- Level selection ----
   function selectLevel(level) {
     currentLevel = level;
-    currentVocabulary = getVocabulary(level);
+    // Deep copy so shuffling doesn't mutate original data
+    currentVocabulary = getVocabulary(level).map(function (cat) {
+      return Object.assign({}, cat, { words: shuffle(cat.words.slice()) });
+    });
     renderCategories();
     showScreen("categories");
   }
@@ -123,6 +126,8 @@
   // Back: English word + example sentence + "hear sentence" button
 
   function startFlashcards() {
+    // Shuffle words so each session is different
+    currentCategory.words = shuffle(currentCategory.words.slice());
     currentIndex = 0;
     isFlipped = false;
     showScreen("flashcards");

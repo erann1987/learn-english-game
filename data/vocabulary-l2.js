@@ -15,7 +15,15 @@ const VOCABULARY_L2 = [
       { word: "beige", translation: "בז'", example: "The sand on the beach is beige.", emoji: "🏝️" },
       { word: "maroon", translation: "בורדו", example: "She wore a maroon scarf.", emoji: "🧣" },
       { word: "navy", translation: "כחול כהה", example: "His navy jacket looks very nice.", emoji: "🧥" },
-      { word: "peach", translation: "אפרסק", example: "The sunset is a beautiful peach color.", emoji: "🌅" }
+      { word: "peach", translation: "אפרסק", example: "The sunset is a beautiful peach color.", emoji: "🌅" },
+      { word: "coral", translation: "אלמוגי", example: "She painted her nails a pretty coral color.", emoji: "🪸" },
+      { word: "ivory", translation: "שנהב", example: "The piano keys are made of ivory white.", emoji: "🎹" },
+      { word: "olive", translation: "ירוק זית", example: "He wore an olive green coat.", emoji: "🫒" },
+      { word: "lime", translation: "ירוק ליים", example: "The lime green frog sat on a leaf.", emoji: "🐸" },
+      { word: "lavender", translation: "לבנדר", example: "The lavender flowers smell so good.", emoji: "💜" },
+      { word: "crimson", translation: "ארגמן", example: "The crimson sunset was very beautiful.", emoji: "🌹" },
+      { word: "teal", translation: "כחול-ירוק", example: "The teal ocean sparkles in the sun.", emoji: "🌊" },
+      { word: "bronze", translation: "ארד", example: "He won a bronze medal in the race.", emoji: "🥉" }
     ]
   },
   {
@@ -30,7 +38,15 @@ const VOCABULARY_L2 = [
       { word: "parrot", translation: "תוכי", example: "The parrot can repeat what you say.", emoji: "🦜" },
       { word: "turtle", translation: "צב", example: "The turtle walks very slowly.", emoji: "🐢" },
       { word: "whale", translation: "לווייתן", example: "The whale is the biggest animal in the sea.", emoji: "🐋" },
-      { word: "kangaroo", translation: "קנגורו", example: "The kangaroo carries her baby in a pouch.", emoji: "🦘" }
+      { word: "kangaroo", translation: "קנגורו", example: "The kangaroo carries her baby in a pouch.", emoji: "🦘" },
+      { word: "zebra", translation: "זברה", example: "The zebra has black and white stripes.", emoji: "🦓" },
+      { word: "tiger", translation: "נמר", example: "The tiger is hiding in the tall grass.", emoji: "🐅" },
+      { word: "bear", translation: "דוב", example: "The bear sleeps all winter long.", emoji: "🐻" },
+      { word: "monkey", translation: "קוף", example: "The monkey is swinging from tree to tree.", emoji: "🐒" },
+      { word: "snake", translation: "נחש", example: "The snake moves quietly through the grass.", emoji: "🐍" },
+      { word: "eagle", translation: "נשר", example: "The eagle flies high above the mountains.", emoji: "🦅" },
+      { word: "fox", translation: "שועל", example: "The clever fox runs through the forest.", emoji: "🦊" },
+      { word: "wolf", translation: "זאב", example: "The wolf howls at the moon at night.", emoji: "🐺" }
     ]
   },
   {
@@ -45,7 +61,15 @@ const VOCABULARY_L2 = [
       { word: "dress", translation: "שמלה", example: "She wore a pretty dress to the party.", emoji: "👗" },
       { word: "jacket", translation: "מעיל", example: "Put on your jacket, it is cold outside.", emoji: "🧥" },
       { word: "socks", translation: "גרביים", example: "I need to find my other sock.", emoji: "🧦" },
-      { word: "glasses", translation: "משקפיים", example: "Grandpa needs glasses to read.", emoji: "👓" }
+      { word: "glasses", translation: "משקפיים", example: "Grandpa needs glasses to read.", emoji: "👓" },
+      { word: "belt", translation: "חגורה", example: "He needs a belt to hold up his pants.", emoji: "👔" },
+      { word: "scarf", translation: "צעיף", example: "Wrap a scarf around your neck when it is cold.", emoji: "🧣" },
+      { word: "boots", translation: "מגפיים", example: "I wear boots when it rains outside.", emoji: "🥾" },
+      { word: "gloves", translation: "כפפות", example: "Put on your gloves so your hands stay warm.", emoji: "🧤" },
+      { word: "sweater", translation: "סוודר", example: "My grandma made me a warm sweater.", emoji: "🧶" },
+      { word: "skirt", translation: "חצאית", example: "She is wearing a red skirt today.", emoji: "👗" },
+      { word: "pajamas", translation: "פיג'מה", example: "I put on my pajamas before going to bed.", emoji: "😴" },
+      { word: "shorts", translation: "מכנסיים קצרים", example: "I like wearing shorts in the summer.", emoji: "🩳" }
     ]
   },
   {
@@ -60,7 +84,15 @@ const VOCABULARY_L2 = [
       { word: "homework", translation: "שיעורי בית", example: "I need to finish my homework.", emoji: "📝" },
       { word: "classroom", translation: "כיתה", example: "Our classroom has many colorful posters.", emoji: "🏫" },
       { word: "eraser", translation: "מחק", example: "Can I borrow your eraser please?", emoji: "🧹" },
-      { word: "ruler", translation: "סרגל", example: "Use a ruler to draw a straight line.", emoji: "📏" }
+      { word: "ruler", translation: "סרגל", example: "Use a ruler to draw a straight line.", emoji: "📏" },
+      { word: "student", translation: "תלמיד", example: "Every student has a chair and a desk.", emoji: "🧑‍🎓" },
+      { word: "desk", translation: "שולחן", example: "I keep my books on my desk.", emoji: "🪑" },
+      { word: "chalk", translation: "גיר", example: "The teacher writes on the board with chalk.", emoji: "🖍️" },
+      { word: "test", translation: "מבחן", example: "I studied hard for the math test.", emoji: "📋" },
+      { word: "recess", translation: "הפסקה", example: "We play outside during recess.", emoji: "⚽" },
+      { word: "library", translation: "ספרייה", example: "I borrowed a book from the library.", emoji: "📚" },
+      { word: "notebook", translation: "מחברת", example: "I write my notes in a notebook.", emoji: "📓" },
+      { word: "pen", translation: "עט", example: "Can I borrow your pen please?", emoji: "🖊️" }
     ]
   },
   {
@@ -76,7 +108,15 @@ const VOCABULARY_L2 = [
       { word: "singing", translation: "שר", example: "The girl is singing a beautiful song.", emoji: "🎤" },
       { word: "dancing", translation: "רוקד", example: "They are dancing at the party.", emoji: "💃" },
       { word: "sleeping", translation: "ישן", example: "The baby is sleeping quietly.", emoji: "😴" },
-      { word: "writing", translation: "כותב", example: "I am writing a letter to my friend.", emoji: "✍️" }
+      { word: "writing", translation: "כותב", example: "I am writing a letter to my friend.", emoji: "✍️" },
+      { word: "jumping", translation: "קופץ", example: "The rabbit is jumping over the fence.", emoji: "🦘" },
+      { word: "drawing", translation: "מצייר", example: "She is drawing a picture of her family.", emoji: "🎨" },
+      { word: "painting", translation: "צובע", example: "He is painting a rainbow on the wall.", emoji: "🖌️" },
+      { word: "climbing", translation: "מטפס", example: "The boy is climbing up the big tree.", emoji: "🧗" },
+      { word: "talking", translation: "מדבר", example: "She is talking to her friend on the phone.", emoji: "🗣️" },
+      { word: "throwing", translation: "זורק", example: "He is throwing the ball to his dog.", emoji: "🤾" },
+      { word: "eating", translation: "אוכל", example: "The monkey is eating a yellow banana.", emoji: "🍌" },
+      { word: "flying", translation: "עף", example: "The bird is flying high in the blue sky.", emoji: "🕊️" }
     ]
   },
   {
@@ -92,7 +132,15 @@ const VOCABULARY_L2 = [
       { word: "today", translation: "היום", example: "Today is a beautiful day.", emoji: "📅" },
       { word: "tomorrow", translation: "מחר", example: "Tomorrow we go to the park.", emoji: "📆" },
       { word: "yesterday", translation: "אתמול", example: "Yesterday I played with my friend.", emoji: "⏪" },
-      { word: "weekend", translation: "סוף שבוע", example: "On the weekend we visit grandma.", emoji: "🎉" }
+      { word: "weekend", translation: "סוף שבוע", example: "On the weekend we visit grandma.", emoji: "🎉" },
+      { word: "hour", translation: "שעה", example: "The movie is one hour long.", emoji: "🕐" },
+      { word: "minute", translation: "דקה", example: "Wait one minute, I am almost ready!", emoji: "⏱️" },
+      { word: "early", translation: "מוקדם", example: "I woke up early to see the sunrise.", emoji: "🌄" },
+      { word: "late", translation: "מאוחר", example: "Don't stay up too late tonight.", emoji: "🌙" },
+      { word: "always", translation: "תמיד", example: "I always brush my teeth before bed.", emoji: "🪥" },
+      { word: "never", translation: "אף פעם", example: "I never go to school without breakfast.", emoji: "🚫" },
+      { word: "soon", translation: "בקרוב", example: "The bus will come very soon.", emoji: "🔜" },
+      { word: "clock", translation: "שעון", example: "Look at the clock to see the time.", emoji: "🕰️" }
     ]
   },
   {
@@ -107,7 +155,15 @@ const VOCABULARY_L2 = [
       { word: "tired", translation: "עייף", example: "I am tired after playing all day.", emoji: "😴" },
       { word: "excited", translation: "נרגש", example: "I am so excited about my birthday!", emoji: "🤩" },
       { word: "surprised", translation: "מופתע", example: "She was surprised by the gift.", emoji: "😲" },
-      { word: "proud", translation: "גאה", example: "Mom is proud of me.", emoji: "🥲" }
+      { word: "proud", translation: "גאה", example: "Mom is proud of me.", emoji: "🥲" },
+      { word: "brave", translation: "אמיץ", example: "The brave boy was not afraid of the dark.", emoji: "🦸" },
+      { word: "lonely", translation: "בודד", example: "She felt lonely when her friend moved away.", emoji: "😔" },
+      { word: "shy", translation: "ביישן", example: "The shy girl hid behind her mother.", emoji: "🫣" },
+      { word: "kind", translation: "נחמד", example: "It is important to be kind to everyone.", emoji: "🤗" },
+      { word: "confused", translation: "מבולבל", example: "I was confused by the hard question.", emoji: "😵‍💫" },
+      { word: "calm", translation: "רגוע", example: "Take a deep breath and stay calm.", emoji: "😌" },
+      { word: "nervous", translation: "עצבני", example: "I feel nervous before a big test.", emoji: "😰" },
+      { word: "jealous", translation: "מקנא", example: "He was jealous of his friend's new toy.", emoji: "😒" }
     ]
   },
   {
@@ -123,7 +179,15 @@ const VOCABULARY_L2 = [
       { word: "I am hungry", translation: "אני רעב", example: "I am hungry, can I have a snack?", emoji: "🍽️" },
       { word: "let's play together", translation: "בוא נשחק ביחד", example: "Hey! Let's play together!", emoji: "🎮" },
       { word: "see you later", translation: "נתראה אחר כך", example: "Bye! See you later!", emoji: "👋" },
-      { word: "excuse me", translation: "סליחה", example: "Excuse me, where is the bathroom?", emoji: "🙋" }
+      { word: "excuse me", translation: "סליחה", example: "Excuse me, where is the bathroom?", emoji: "🙋" },
+      { word: "I need help", translation: "אני צריך עזרה", example: "I need help with my homework.", emoji: "🆘" },
+      { word: "where are you from", translation: "מאיפה אתה", example: "Where are you from? I am from Israel.", emoji: "🌍" },
+      { word: "what do you like", translation: "מה אתה אוהב", example: "What do you like to do after school?", emoji: "❤️" },
+      { word: "nice to meet you", translation: "נעים להכיר", example: "Hello, my name is Dan. Nice to meet you!", emoji: "🤝" },
+      { word: "I am sorry", translation: "אני מצטער", example: "I am sorry I broke your pencil.", emoji: "😢" },
+      { word: "how old are you", translation: "בן כמה אתה", example: "How old are you? I am eight years old.", emoji: "🎂" },
+      { word: "I don't know", translation: "אני לא יודע", example: "I don't know the answer to this question.", emoji: "🤷" },
+      { word: "what is your favorite", translation: "מה האהוב עליך", example: "What is your favorite animal?", emoji: "⭐" }
     ]
   },
   {
@@ -139,7 +203,15 @@ const VOCABULARY_L2 = [
       { word: "why", translation: "למה", example: "Why are you sad?", emoji: "🤔" },
       { word: "how", translation: "איך", example: "How do you feel today?", emoji: "💭" },
       { word: "how many", translation: "כמה", example: "How many brothers do you have?", emoji: "🔢" },
-      { word: "which", translation: "איזה", example: "Which color do you like?", emoji: "👉" }
+      { word: "which", translation: "איזה", example: "Which color do you like?", emoji: "👉" },
+      { word: "whose", translation: "של מי", example: "Whose bag is this on the floor?", emoji: "👜" },
+      { word: "how much", translation: "כמה (מחיר)", example: "How much does this toy cost?", emoji: "💰" },
+      { word: "how old", translation: "בן כמה", example: "How old is your little sister?", emoji: "🎂" },
+      { word: "how far", translation: "כמה רחוק", example: "How far is the park from here?", emoji: "📏" },
+      { word: "how long", translation: "כמה זמן", example: "How long does it take to get to school?", emoji: "⏳" },
+      { word: "how often", translation: "כמה פעמים", example: "How often do you play soccer?", emoji: "🔄" },
+      { word: "what kind", translation: "איזה סוג", example: "What kind of ice cream do you want?", emoji: "🍦" },
+      { word: "is there", translation: "האם יש", example: "Is there a park near your house?", emoji: "🏞️" }
     ]
   },
   {
@@ -155,7 +227,15 @@ const VOCABULARY_L2 = [
       { word: "next to", translation: "ליד", example: "I sit next to my friend.", emoji: "👫" },
       { word: "behind", translation: "מאחורי", example: "The cat is behind the door.", emoji: "🚪" },
       { word: "in front of", translation: "מול", example: "The car is in front of the house.", emoji: "🏠" },
-      { word: "between", translation: "בין", example: "I sit between mom and dad.", emoji: "👨‍👩‍👦" }
+      { word: "between", translation: "בין", example: "I sit between mom and dad.", emoji: "👨‍👩‍👦" },
+      { word: "inside", translation: "בפנים", example: "The cat is sleeping inside the box.", emoji: "📦" },
+      { word: "outside", translation: "בחוץ", example: "The children are playing outside in the yard.", emoji: "🌳" },
+      { word: "above", translation: "מעל", example: "The bird is flying above the trees.", emoji: "☁️" },
+      { word: "below", translation: "מתחת", example: "The fish swims below the water.", emoji: "🐟" },
+      { word: "near", translation: "קרוב", example: "The store is very near our house.", emoji: "🏪" },
+      { word: "far", translation: "רחוק", example: "The moon is very far from the Earth.", emoji: "🌙" },
+      { word: "around", translation: "סביב", example: "We walked around the lake together.", emoji: "🔄" },
+      { word: "toward", translation: "לכיוון", example: "The dog is running toward the park.", emoji: "🐕" }
     ]
   },
   {
@@ -171,7 +251,15 @@ const VOCABULARY_L2 = [
       { word: "spring", translation: "אביב", example: "Flowers grow in spring.", emoji: "🌸" },
       { word: "summer", translation: "קיץ", example: "We go to the beach in summer.", emoji: "🏖️" },
       { word: "fall", translation: "סתיו", example: "Leaves fall down in fall.", emoji: "🍂" },
-      { word: "winter", translation: "חורף", example: "It is cold in winter.", emoji: "❄️" }
+      { word: "winter", translation: "חורף", example: "It is cold in winter.", emoji: "❄️" },
+      { word: "Tuesday", translation: "יום שלישי", example: "On Tuesday we have art class.", emoji: "🎨" },
+      { word: "Wednesday", translation: "יום רביעי", example: "Wednesday is the middle of the week.", emoji: "📅" },
+      { word: "Thursday", translation: "יום חמישי", example: "We have a field trip on Thursday.", emoji: "🚌" },
+      { word: "month", translation: "חודש", example: "There are twelve months in a year.", emoji: "🗓️" },
+      { word: "year", translation: "שנה", example: "This year I am learning English.", emoji: "📆" },
+      { word: "week", translation: "שבוע", example: "There are seven days in a week.", emoji: "7️⃣" },
+      { word: "holiday", translation: "חופשה", example: "On the holiday we visit our family.", emoji: "🎊" },
+      { word: "date", translation: "תאריך", example: "What is the date today?", emoji: "🗓️" }
     ]
   },
   {
@@ -187,7 +275,15 @@ const VOCABULARY_L2 = [
       { word: "come", translation: "לבוא", example: "Come here please!", emoji: "👋" },
       { word: "open", translation: "לפתוח", example: "Open your book to page ten.", emoji: "📖" },
       { word: "close", translation: "לסגור", example: "Please close the window.", emoji: "🪟" },
-      { word: "play", translation: "לשחק", example: "I want to play with my friends.", emoji: "🎮" }
+      { word: "play", translation: "לשחק", example: "I want to play with my friends.", emoji: "🎮" },
+      { word: "wash", translation: "לרחוץ", example: "Please wash your hands before eating.", emoji: "🧼" },
+      { word: "clean", translation: "לנקות", example: "Help me clean the table after dinner.", emoji: "🧹" },
+      { word: "study", translation: "ללמוד", example: "I study English every day after school.", emoji: "📖" },
+      { word: "listen", translation: "להקשיב", example: "Listen carefully to the teacher.", emoji: "👂" },
+      { word: "watch", translation: "לצפות", example: "I like to watch cartoons on Saturday.", emoji: "📺" },
+      { word: "help", translation: "לעזור", example: "I always help my mom in the kitchen.", emoji: "🤝" },
+      { word: "carry", translation: "לשאת", example: "Can you help me carry these bags?", emoji: "🏋️" },
+      { word: "build", translation: "לבנות", example: "Let's build a tall tower with blocks.", emoji: "🧱" }
     ]
   }
 ];
