@@ -285,5 +285,29 @@ const VOCABULARY_L2 = [
       { word: "carry", translation: "לשאת", example: "Can you help me carry these bags?", emoji: "🏋️" },
       { word: "build", translation: "לבנות", example: "Let's build a tall tower with blocks.", emoji: "🧱" }
     ]
+  },
+  {
+    category: "משפטי שאלה מתקדמים",
+    categoryEn: "Advanced Questions",
+    emoji: "❓",
+    quizStyle: "text",
+    words: [
+      { word: "What would you like to eat?", translation: "מה תרצה לאכול?", example: "What would you like to eat for lunch?", emoji: "🍽️" },
+      { word: "Where did you go yesterday?", translation: "לאן הלכת אתמול?", example: "Where did you go yesterday?", emoji: "🗺️" },
+      { word: "Why do you like this book?", translation: "למה אתה אוהב את הספר הזה?", example: "Why do you like this book so much?", emoji: "📚" },
+      { word: "How do you get to school?", translation: "איך אתה מגיע לבית הספר?", example: "How do you get to school every day?", emoji: "🏫" },
+      { word: "When does the movie start?", translation: "מתי הסרט מתחיל?", example: "When does the movie start?", emoji: "🎬" },
+      { word: "Who is your best friend?", translation: "מי החבר הכי טוב שלך?", example: "Who is your best friend at school?", emoji: "👫" },
+      { word: "What did you learn today?", translation: "מה למדת היום?", example: "What did you learn today at school?", emoji: "📝" },
+      { word: "Where are we going?", translation: "לאן אנחנו הולכים?", example: "Where are we going this weekend?", emoji: "🚗" },
+      { word: "Why is the sky blue?", translation: "למה השמיים כחולים?", example: "Why is the sky blue?", emoji: "🌤️" },
+      { word: "How many friends do you have?", translation: "כמה חברים יש לך?", example: "How many friends do you have in class?", emoji: "👨‍👩‍👧‍👦" },
+      { word: "Which game do you want to play?", translation: "באיזה משחק אתה רוצה לשחק?", example: "Which game do you want to play?", emoji: "🎮" },
+      { word: "What is your favorite food?", translation: "מה האוכל האהוב עליך?", example: "What is your favorite food?", emoji: "🍕" },
+      { word: "Can you help me please?", translation: "אתה יכול לעזור לי בבקשה?", example: "Can you help me with my homework?", emoji: "🙏" },
+      { word: "Where should I put this?", translation: "איפה לשים את זה?", example: "Where should I put this bag?", emoji: "📦" },
+      { word: "How long does it take?", translation: "כמה זמן זה לוקח?", example: "How long does it take to get there?", emoji: "⏳" },
+      { word: "What happened at school?", translation: "מה קרה בבית הספר?", example: "What happened at school today?", emoji: "🏫" }
+    ]
   }
 ];

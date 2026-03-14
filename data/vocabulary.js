@@ -204,6 +204,30 @@ const VOCABULARY = [
     ]
   },
   {
+    category: "משפטי שאלה",
+    categoryEn: "Question Sentences",
+    emoji: "❓",
+    quizStyle: "text",
+    words: [
+      { word: "What is your name?", translation: "מה השם שלך?", example: "What is your name?", emoji: "📛" },
+      { word: "How are you?", translation: "מה שלומך?", example: "How are you today?", emoji: "😊" },
+      { word: "Where is the cat?", translation: "איפה החתול?", example: "Where is the cat?", emoji: "🐱" },
+      { word: "What color is this?", translation: "איזה צבע זה?", example: "What color is this flower?", emoji: "🎨" },
+      { word: "How old are you?", translation: "בן כמה אתה?", example: "How old are you?", emoji: "🎂" },
+      { word: "Where do you live?", translation: "איפה אתה גר?", example: "Where do you live?", emoji: "🏠" },
+      { word: "What do you want?", translation: "מה אתה רוצה?", example: "What do you want to eat?", emoji: "🤔" },
+      { word: "Who is this?", translation: "מי זה?", example: "Who is this in the picture?", emoji: "🙋" },
+      { word: "Where is the ball?", translation: "איפה הכדור?", example: "Where is the ball?", emoji: "⚽" },
+      { word: "What is this?", translation: "מה זה?", example: "What is this thing?", emoji: "❓" },
+      { word: "Do you like ice cream?", translation: "אתה אוהב גלידה?", example: "Do you like ice cream?", emoji: "🍦" },
+      { word: "Can I have water?", translation: "אפשר מים?", example: "Can I have water please?", emoji: "💧" },
+      { word: "Where is mommy?", translation: "איפה אמא?", example: "Where is mommy?", emoji: "👩" },
+      { word: "What time is it?", translation: "מה השעה?", example: "What time is it now?", emoji: "⏰" },
+      { word: "Why are you sad?", translation: "למה אתה עצוב?", example: "Why are you sad today?", emoji: "😢" },
+      { word: "How many do you have?", translation: "כמה יש לך?", example: "How many toys do you have?", emoji: "🔢" }
+    ]
+  },
+  {
     category: "חדרים בבית",
     categoryEn: "House",
     emoji: "🏠",
