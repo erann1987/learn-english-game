@@ -157,7 +157,7 @@
   }
 
   // ========== QUIZ MODE ==========
-  // Hear English word + see emoji → pick the correct Hebrew translation
+  // Hear English word → pick the correct emoji from the same category
 
   function startQuiz() {
     quizWords = shuffle(currentCategory.words.slice());
@@ -173,20 +173,25 @@
     quizAnswered = false;
     quizFeedback.classList.add("hidden");
     var entry = quizWords[quizIndex];
-    quizEmoji.textContent = entry.emoji;
 
-    // Build 4 Hebrew choices (1 correct + 3 distractors)
-    var allWords = getAllWordsExcept(entry.word);
-    var distractors = shuffle(allWords).slice(0, 3).map(function (w) { return w.translation; });
-    var choices = shuffle(distractors.concat([entry.translation]));
+    // Hide the prompt emoji so it doesn't give away the answer
+    quizEmoji.textContent = "🎧";
+
+    // Build 4 emoji choices from the SAME category
+    var sameCatWords = currentCategory.words.filter(function (w) {
+      return w.word !== entry.word;
+    });
+    var distractors = shuffle(sameCatWords).slice(0, 3);
+    var choiceEntries = shuffle(distractors.concat([entry]));
 
     quizChoices.innerHTML = "";
-    choices.forEach(function (choice) {
+    choiceEntries.forEach(function (choice) {
       var btn = document.createElement("button");
-      btn.className = "quiz-choice-btn";
-      btn.textContent = choice;
+      btn.className = "quiz-choice-btn quiz-choice-emoji";
+      btn.textContent = choice.emoji;
+      btn.setAttribute("data-word", choice.word);
       btn.addEventListener("click", function () {
-        handleQuizAnswer(btn, choice, entry.translation, entry.word);
+        handleQuizAnswer(btn, choice.word, entry.word, entry.emoji, entry.translation);
       });
       quizChoices.appendChild(btn);
     });
@@ -195,7 +200,7 @@
     Audio.speakEnglish(entry.word);
   }
 
-  function handleQuizAnswer(btn, chosen, correctHe, correctEn) {
+  function handleQuizAnswer(btn, chosenWord, correctWord, correctEmoji, correctHe) {
     if (quizAnswered) return;
     quizAnswered = true;
 
@@ -203,22 +208,22 @@
     var buttons = quizChoices.querySelectorAll(".quiz-choice-btn");
     buttons.forEach(function (b) {
       b.classList.add("disabled");
-      if (b.textContent === correctHe) b.classList.add("correct");
+      if (b.getAttribute("data-word") === correctWord) b.classList.add("correct");
     });
 
-    if (chosen === correctHe) {
+    if (chosenWord === correctWord) {
       quizScore++;
       quizScoreEl.textContent = "⭐ " + quizScore;
       quizFeedbackText.textContent = "!נכון 🎉";
       quizFeedbackText.style.color = "var(--color-success)";
     } else {
       btn.classList.add("wrong");
-      quizFeedbackText.textContent = correctHe + " ✓";
+      quizFeedbackText.textContent = correctEmoji + " " + correctHe + " ✓";
       quizFeedbackText.style.color = "var(--color-error)";
     }
 
-    // Always pronounce the English word on answer
-    Audio.speakEnglish(correctEn);
+    // Pronounce the correct English word
+    Audio.speakEnglish(correctWord);
     quizFeedback.classList.remove("hidden");
   }
 
