@@ -369,6 +369,14 @@ h2 {
   direction: ltr;
 }
 
+.word-text-en-small {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  direction: ltr;
+  letter-spacing: 0.05em;
+}
+
 .translation-text {
   font-size: 2rem;
   font-weight: 700;
@@ -430,6 +438,16 @@ h2 {
   font-size: 1rem;
   color: var(--color-text-muted);
   margin-bottom: 0.3rem;
+}
+
+.quiz-word-en {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  direction: ltr;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
 }
 
 .quiz-word-he {

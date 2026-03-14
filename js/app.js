@@ -32,6 +32,7 @@
   var cardEmoji = document.getElementById("card-emoji");
   var backEmoji = document.getElementById("back-emoji");
   var wordTextHe = document.getElementById("word-text-he");
+  var wordTextEnSmall = document.getElementById("word-text-en-small");
   var wordTextEn = document.getElementById("word-text-en");
   var exampleText = document.getElementById("example-text");
   var progressLabel = document.getElementById("progress-label");
@@ -47,6 +48,7 @@
   var quizArea = document.getElementById("quiz-area");
   var quizBackBtn = document.getElementById("quiz-back-btn");
   var quizEmoji = document.getElementById("quiz-emoji");
+  var quizWordEn = document.getElementById("quiz-word-en");
   var quizHearBtn = document.getElementById("quiz-hear-btn");
   var quizChoices = document.getElementById("quiz-choices");
   var quizFeedback = document.getElementById("quiz-feedback");
@@ -132,9 +134,10 @@
     var words = currentCategory.words;
     var entry = words[currentIndex];
 
-    // Front side: Hebrew + emoji
+    // Front side: Hebrew + emoji + English text
     cardEmoji.textContent = entry.emoji;
     wordTextHe.textContent = entry.translation;
+    wordTextEnSmall.textContent = entry.word;
 
     // Back side: English + example
     backEmoji.textContent = entry.emoji;
@@ -198,6 +201,8 @@
     var useText = currentCategory.quizStyle === "text";
 
     quizEmoji.textContent = "🎧";
+    quizWordEn.classList.add("hidden");
+    quizWordEn.textContent = "";
 
     // Build 4 choices from the SAME category
     var sameCatWords = currentCategory.words.filter(function (w) {
@@ -223,6 +228,10 @@
   }
 
   function handleQuizAnswer(btn, chosenWord, correctWord, correctEmoji, correctHe) {
+    // Reveal the English word on any answer
+    quizWordEn.textContent = correctWord;
+    quizWordEn.classList.remove("hidden");
+
     if (chosenWord === correctWord) {
       // Correct! Lock the question and move on
       quizAnswered = true;
