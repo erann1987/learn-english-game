@@ -125,5 +125,69 @@ const VOCABULARY_L2 = [
       { word: "see you later", translation: "נתראה אחר כך", example: "Bye! See you later!", emoji: "👋" },
       { word: "excuse me", translation: "סליחה", example: "Excuse me, where is the bathroom?", emoji: "🙋" }
     ]
+  },
+  {
+    category: "מילות שאלה",
+    categoryEn: "Question Words",
+    emoji: "❓",
+    quizStyle: "text",
+    words: [
+      { word: "who", translation: "מי", example: "Who is your best friend?", emoji: "🙋" },
+      { word: "what", translation: "מה", example: "What is your name?", emoji: "❓" },
+      { word: "where", translation: "איפה", example: "Where do you live?", emoji: "📍" },
+      { word: "when", translation: "מתי", example: "When is your birthday?", emoji: "📅" },
+      { word: "why", translation: "למה", example: "Why are you sad?", emoji: "🤔" },
+      { word: "how", translation: "איך", example: "How do you feel today?", emoji: "💭" },
+      { word: "how many", translation: "כמה", example: "How many brothers do you have?", emoji: "🔢" },
+      { word: "which", translation: "איזה", example: "Which color do you like?", emoji: "👉" }
+    ]
+  },
+  {
+    category: "מיקום וכיוון",
+    categoryEn: "Directions",
+    emoji: "📍",
+    quizStyle: "text",
+    words: [
+      { word: "left", translation: "שמאל", example: "Turn left at the corner.", emoji: "⬅️" },
+      { word: "right", translation: "ימין", example: "The school is on the right.", emoji: "➡️" },
+      { word: "up", translation: "למעלה", example: "Look up at the sky!", emoji: "⬆️" },
+      { word: "down", translation: "למטה", example: "The ball rolled down the hill.", emoji: "⬇️" },
+      { word: "next to", translation: "ליד", example: "I sit next to my friend.", emoji: "👫" },
+      { word: "behind", translation: "מאחורי", example: "The cat is behind the door.", emoji: "🚪" },
+      { word: "in front of", translation: "מול", example: "The car is in front of the house.", emoji: "🏠" },
+      { word: "between", translation: "בין", example: "I sit between mom and dad.", emoji: "👨‍👩‍👦" }
+    ]
+  },
+  {
+    category: "ימים ועונות",
+    categoryEn: "Days & Seasons",
+    emoji: "🗓️",
+    quizStyle: "text",
+    words: [
+      { word: "Sunday", translation: "יום ראשון", example: "On Sunday we go to the park.", emoji: "☀️" },
+      { word: "Monday", translation: "יום שני", example: "Monday is the first day of school.", emoji: "📚" },
+      { word: "Friday", translation: "יום שישי", example: "Friday is my favorite day!", emoji: "🎉" },
+      { word: "Saturday", translation: "שבת", example: "On Saturday we rest.", emoji: "😌" },
+      { word: "spring", translation: "אביב", example: "Flowers grow in spring.", emoji: "🌸" },
+      { word: "summer", translation: "קיץ", example: "We go to the beach in summer.", emoji: "🏖️" },
+      { word: "fall", translation: "סתיו", example: "Leaves fall down in fall.", emoji: "🍂" },
+      { word: "winter", translation: "חורף", example: "It is cold in winter.", emoji: "❄️" }
+    ]
+  },
+  {
+    category: "פעלים יומיומיים",
+    categoryEn: "Daily Verbs",
+    emoji: "🏃",
+    quizStyle: "text",
+    words: [
+      { word: "wake up", translation: "להתעורר", example: "I wake up at seven o'clock.", emoji: "⏰" },
+      { word: "eat", translation: "לאכול", example: "I eat breakfast every morning.", emoji: "🍽️" },
+      { word: "drink", translation: "לשתות", example: "I drink water when I am thirsty.", emoji: "🥤" },
+      { word: "go", translation: "ללכת", example: "I go to school every day.", emoji: "🚶" },
+      { word: "come", translation: "לבוא", example: "Come here please!", emoji: "👋" },
+      { word: "open", translation: "לפתוח", example: "Open your book to page ten.", emoji: "📖" },
+      { word: "close", translation: "לסגור", example: "Please close the window.", emoji: "🪟" },
+      { word: "play", translation: "לשחק", example: "I want to play with my friends.", emoji: "🎮" }
+    ]
   }
 ];

@@ -136,5 +136,50 @@ const VOCABULARY = [
       { word: "good morning", translation: "בוקר טוב", example: "Good morning, teacher!", emoji: "🌅" },
       { word: "good night", translation: "לילה טוב", example: "Good night! Sweet dreams!", emoji: "🌙" }
     ]
+  },
+  {
+    category: "חדרים בבית",
+    categoryEn: "House",
+    emoji: "🏠",
+    words: [
+      { word: "house", translation: "בית", example: "This is my house.", emoji: "🏠" },
+      { word: "bedroom", translation: "חדר שינה", example: "I sleep in my bedroom.", emoji: "🛏️" },
+      { word: "kitchen", translation: "מטבח", example: "Mom cooks in the kitchen.", emoji: "🍳" },
+      { word: "bathroom", translation: "חדר אמבטיה", example: "I brush my teeth in the bathroom.", emoji: "🚿" },
+      { word: "door", translation: "דלת", example: "Please close the door.", emoji: "🚪" },
+      { word: "window", translation: "חלון", example: "Open the window please.", emoji: "🪟" },
+      { word: "table", translation: "שולחן", example: "The food is on the table.", emoji: "🪑" },
+      { word: "chair", translation: "כיסא", example: "Sit on the chair.", emoji: "💺" }
+    ]
+  },
+  {
+    category: "כלי תחבורה",
+    categoryEn: "Transport",
+    emoji: "🚗",
+    words: [
+      { word: "car", translation: "מכונית", example: "Dad drives a car.", emoji: "🚗" },
+      { word: "bus", translation: "אוטובוס", example: "I go to school by bus.", emoji: "🚌" },
+      { word: "bicycle", translation: "אופניים", example: "I ride my bicycle in the park.", emoji: "🚲" },
+      { word: "train", translation: "רכבת", example: "The train is very fast.", emoji: "🚂" },
+      { word: "airplane", translation: "מטוס", example: "The airplane flies in the sky.", emoji: "✈️" },
+      { word: "boat", translation: "סירה", example: "The boat is on the water.", emoji: "⛵" },
+      { word: "truck", translation: "משאית", example: "The truck is very big.", emoji: "🚚" },
+      { word: "helicopter", translation: "מסוק", example: "The helicopter flies above us.", emoji: "🚁" }
+    ]
+  },
+  {
+    category: "צורות",
+    categoryEn: "Shapes",
+    emoji: "🔵",
+    words: [
+      { word: "circle", translation: "עיגול", example: "The ball is a circle.", emoji: "⭕" },
+      { word: "square", translation: "ריבוע", example: "The window is a square.", emoji: "⬜" },
+      { word: "triangle", translation: "משולש", example: "The roof looks like a triangle.", emoji: "🔺" },
+      { word: "star", translation: "כוכב", example: "I drew a star.", emoji: "⭐" },
+      { word: "heart", translation: "לב", example: "I drew a heart for mom.", emoji: "❤️" },
+      { word: "diamond", translation: "מעוין", example: "The kite is a diamond shape.", emoji: "💎" },
+      { word: "rectangle", translation: "מלבן", example: "The door is a rectangle.", emoji: "▬" },
+      { word: "oval", translation: "אליפסה", example: "The egg is an oval shape.", emoji: "🥚" }
+    ]
   }
 ];
