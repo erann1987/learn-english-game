@@ -17,6 +17,7 @@
   var quizIndex = 0;
   var quizScore = 0;
   var quizAnswered = false;
+  var quizSpeakTimer = null;
   var touchStartX = 0;
 
   // ---- DOM refs ----
@@ -200,6 +201,10 @@
   }
 
   function showQuizQuestion() {
+    // Cancel any pending speech from previous question
+    if (quizSpeakTimer) { clearTimeout(quizSpeakTimer); quizSpeakTimer = null; }
+    Audio.stop();
+
     quizAnswered = false;
     quizFeedback.classList.add("hidden");
     var entry = quizWords[quizIndex];
@@ -237,8 +242,10 @@
       quizChoices.appendChild(btn);
     });
 
-    // Pronounce the English word
-    Audio.speakEnglish(entry.word);
+    // Pronounce the new word after a short delay (ensures previous speech is fully cancelled)
+    quizSpeakTimer = setTimeout(function () {
+      Audio.speakEnglish(entry.word);
+    }, 300);
   }
 
   function handleQuizAnswer(btn, chosenWord, correctWord, correctEmoji, correctHe) {
@@ -260,7 +267,7 @@
       quizNextBtn.classList.remove("hidden");
 
       // Pronounce the word after the chime
-      setTimeout(function () { Audio.speakEnglish(correctWord); }, 500);
+      quizSpeakTimer = setTimeout(function () { Audio.speakEnglish(correctWord); }, 500);
     } else {
       // Wrong — shake the button, mark it out, let them try again
       btn.classList.add("wrong");
@@ -274,7 +281,7 @@
       quizNextBtn.classList.add("hidden");
 
       // Re-pronounce the word after the buzz to help them
-      setTimeout(function () { Audio.speakEnglish(correctWord); }, 500);
+      quizSpeakTimer = setTimeout(function () { Audio.speakEnglish(correctWord); }, 500);
 
       // Hide the "try again" message after a moment
       setTimeout(function () {
