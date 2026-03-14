@@ -21,8 +21,8 @@
   var flashcard = document.getElementById("flashcard");
   var cardEmoji = document.getElementById("card-emoji");
   var backEmoji = document.getElementById("back-emoji");
-  var wordText = document.getElementById("word-text");
-  var translationText = document.getElementById("translation-text");
+  var wordTextHe = document.getElementById("word-text-he");
+  var wordTextEn = document.getElementById("word-text-en");
   var exampleText = document.getElementById("example-text");
   var progressLabel = document.getElementById("progress-label");
   var progressBar = document.getElementById("progress-bar");
@@ -37,7 +37,6 @@
   var quizArea = document.getElementById("quiz-area");
   var quizBackBtn = document.getElementById("quiz-back-btn");
   var quizEmoji = document.getElementById("quiz-emoji");
-  var quizWordHe = document.getElementById("quiz-word-he");
   var quizHearBtn = document.getElementById("quiz-hear-btn");
   var quizChoices = document.getElementById("quiz-choices");
   var quizFeedback = document.getElementById("quiz-feedback");
@@ -95,7 +94,10 @@
     }
   }
 
-  // ---- Flashcard Mode ----
+  // ========== FLASHCARD MODE ==========
+  // Front: Hebrew word + emoji + "hear in English" button
+  // Back: English word + example sentence + "hear sentence" button
+
   function startFlashcards() {
     currentIndex = 0;
     isFlipped = false;
@@ -107,10 +109,14 @@
   function showCard() {
     var words = currentCategory.words;
     var entry = words[currentIndex];
+
+    // Front side: Hebrew + emoji
     cardEmoji.textContent = entry.emoji;
+    wordTextHe.textContent = entry.translation;
+
+    // Back side: English + example
     backEmoji.textContent = entry.emoji;
-    wordText.textContent = entry.word;
-    translationText.textContent = entry.translation;
+    wordTextEn.textContent = entry.word;
     exampleText.textContent = entry.example;
 
     isFlipped = false;
@@ -121,9 +127,6 @@
 
     prevBtn.disabled = currentIndex === 0;
     nextBtn.disabled = currentIndex === words.length - 1;
-
-    // Auto-pronounce the word
-    Audio.speakEnglish(entry.word);
   }
 
   function nextCard() {
@@ -147,12 +150,15 @@
     isFlipped = !isFlipped;
     flashcard.classList.toggle("flipped");
     if (isFlipped) {
+      // Pronounce the English word when flipping to back
       var entry = currentCategory.words[currentIndex];
-      Audio.speakEnglish(entry.example);
+      Audio.speakEnglish(entry.word);
     }
   }
 
-  // ---- Quiz Mode ----
+  // ========== QUIZ MODE ==========
+  // Hear English word + see emoji → pick the correct Hebrew translation
+
   function startQuiz() {
     quizWords = shuffle(currentCategory.words.slice());
     quizIndex = 0;
@@ -168,15 +174,11 @@
     quizFeedback.classList.add("hidden");
     var entry = quizWords[quizIndex];
     quizEmoji.textContent = entry.emoji;
-    quizWordHe.textContent = entry.translation;
 
-    // Show hear button for phrase categories
-    quizHearBtn.classList.add("hidden");
-
-    // Build 4 choices (1 correct + 3 distractors)
+    // Build 4 Hebrew choices (1 correct + 3 distractors)
     var allWords = getAllWordsExcept(entry.word);
-    var distractors = shuffle(allWords).slice(0, 3).map(function (w) { return w.word; });
-    var choices = shuffle(distractors.concat([entry.word]));
+    var distractors = shuffle(allWords).slice(0, 3).map(function (w) { return w.translation; });
+    var choices = shuffle(distractors.concat([entry.translation]));
 
     quizChoices.innerHTML = "";
     choices.forEach(function (choice) {
@@ -184,39 +186,39 @@
       btn.className = "quiz-choice-btn";
       btn.textContent = choice;
       btn.addEventListener("click", function () {
-        handleQuizAnswer(btn, choice, entry.word);
+        handleQuizAnswer(btn, choice, entry.translation, entry.word);
       });
       quizChoices.appendChild(btn);
     });
 
-    // Pronounce the Hebrew word then the English
-    Audio.speakHebrew(entry.translation);
+    // Pronounce the English word
+    Audio.speakEnglish(entry.word);
   }
 
-  function handleQuizAnswer(btn, chosen, correct) {
+  function handleQuizAnswer(btn, chosen, correctHe, correctEn) {
     if (quizAnswered) return;
     quizAnswered = true;
 
-    // Disable all buttons
+    // Disable all buttons and highlight correct
     var buttons = quizChoices.querySelectorAll(".quiz-choice-btn");
     buttons.forEach(function (b) {
       b.classList.add("disabled");
-      if (b.textContent === correct) b.classList.add("correct");
+      if (b.textContent === correctHe) b.classList.add("correct");
     });
 
-    if (chosen === correct) {
+    if (chosen === correctHe) {
       quizScore++;
       quizScoreEl.textContent = "⭐ " + quizScore;
       quizFeedbackText.textContent = "!נכון 🎉";
       quizFeedbackText.style.color = "var(--color-success)";
-      Audio.speakEnglish(correct);
     } else {
       btn.classList.add("wrong");
-      quizFeedbackText.textContent = correct + " :התשובה הנכונה";
+      quizFeedbackText.textContent = correctHe + " ✓";
       quizFeedbackText.style.color = "var(--color-error)";
-      Audio.speakEnglish(correct);
     }
 
+    // Always pronounce the English word on answer
+    Audio.speakEnglish(correctEn);
     quizFeedback.classList.remove("hidden");
   }
 
@@ -296,8 +298,7 @@
 
   function handleTouchEnd(e) {
     var diff = e.changedTouches[0].screenX - touchStartX;
-    if (Math.abs(diff) < 50) return; // Too short
-    // RTL: swipe left = next, swipe right = prev
+    if (Math.abs(diff) < 50) return;
     if (diff < 0) nextCard();
     else prevCard();
   }
@@ -313,7 +314,7 @@
       });
     });
 
-    // Navigation
+    // Flashcard navigation
     nextBtn.addEventListener("click", nextCard);
     prevBtn.addEventListener("click", prevCard);
     flipBtn.addEventListener("click", flipCard);
@@ -322,13 +323,13 @@
     quizBackBtn.addEventListener("click", function () { showScreen("mode"); });
     quizNextBtn.addEventListener("click", nextQuizQuestion);
 
-    // Flashcard click to flip
+    // Flashcard click to flip (but not on hear buttons)
     flashcard.addEventListener("click", function (e) {
       if (e.target.closest(".btn-hear")) return;
       flipCard();
     });
 
-    // Audio buttons
+    // Audio buttons — front: hear English word, back: hear English sentence
     hearFrontBtn.addEventListener("click", function (e) {
       e.stopPropagation();
       Audio.speakEnglish(currentCategory.words[currentIndex].word);
@@ -337,6 +338,8 @@
       e.stopPropagation();
       Audio.speakEnglish(currentCategory.words[currentIndex].example);
     });
+
+    // Quiz: replay the English word
     quizHearBtn.addEventListener("click", function () {
       Audio.speakEnglish(quizWords[quizIndex].word);
     });
@@ -349,8 +352,8 @@
     document.addEventListener("keydown", function (e) {
       if (!flashcardArea.classList.contains("hidden")) {
         switch (e.key) {
-          case "ArrowRight": prevCard(); break; // RTL
-          case "ArrowLeft": nextCard(); break;  // RTL
+          case "ArrowRight": prevCard(); break;
+          case "ArrowLeft": nextCard(); break;
           case " ":
           case "Enter": e.preventDefault(); flipCard(); break;
           case "Escape": showScreen("mode"); break;

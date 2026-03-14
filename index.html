@@ -49,18 +49,18 @@
         <span id="progress-label" class="progress-label"></span>
       </div>
 
-      <div id="flashcard" class="flashcard" tabindex="0" role="button" aria-label="Flip card">
+      <div id="flashcard" class="flashcard" tabindex="0" role="button" aria-label="הפוך כרטיסיה">
         <div class="flashcard-inner">
           <div class="flashcard-front">
             <span id="card-emoji" class="card-emoji"></span>
-            <span id="word-text" class="word-text"></span>
-            <button id="hear-front-btn" class="btn btn-hear" aria-label="Hear word">🔊</button>
+            <span id="word-text-he" class="word-text-he"></span>
+            <button id="hear-front-btn" class="btn btn-hear" aria-label="שמע באנגלית">🔊 שמע באנגלית</button>
           </div>
           <div class="flashcard-back">
             <span id="back-emoji" class="card-emoji"></span>
-            <span id="translation-text" class="translation-text"></span>
+            <span id="word-text-en" class="word-text-en"></span>
             <p id="example-text" class="example-text"></p>
-            <button id="hear-back-btn" class="btn btn-hear" aria-label="Hear example">🔊</button>
+            <button id="hear-back-btn" class="btn btn-hear" aria-label="שמע משפט">🔊 שמע משפט</button>
           </div>
         </div>
       </div>
@@ -85,9 +85,8 @@
 
       <div class="quiz-prompt">
         <span id="quiz-emoji" class="quiz-emoji"></span>
-        <p class="quiz-instruction">?מה המילה באנגלית</p>
-        <span id="quiz-word-he" class="quiz-word-he"></span>
-        <button id="quiz-hear-btn" class="btn btn-hear btn-hear-large hidden" aria-label="Hear word">🔊 שמע</button>
+        <p class="quiz-instruction">מה המילה שאתה שומע? 🎧</p>
+        <button id="quiz-hear-btn" class="btn btn-hear btn-hear-large" aria-label="שמע שוב">🔊 שמע שוב</button>
       </div>
 
       <div id="quiz-choices" class="quiz-choices"></div>
