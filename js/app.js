@@ -201,30 +201,43 @@
   }
 
   function handleQuizAnswer(btn, chosenWord, correctWord, correctEmoji, correctHe) {
-    if (quizAnswered) return;
-    quizAnswered = true;
-
-    // Disable all buttons and highlight correct
-    var buttons = quizChoices.querySelectorAll(".quiz-choice-btn");
-    buttons.forEach(function (b) {
-      b.classList.add("disabled");
-      if (b.getAttribute("data-word") === correctWord) b.classList.add("correct");
-    });
-
     if (chosenWord === correctWord) {
+      // Correct! Lock the question and move on
+      quizAnswered = true;
       quizScore++;
       quizScoreEl.textContent = "⭐ " + quizScore;
+      btn.classList.add("correct");
+
+      // Disable all buttons
+      var buttons = quizChoices.querySelectorAll(".quiz-choice-btn");
+      buttons.forEach(function (b) { b.classList.add("disabled"); });
+
       quizFeedbackText.textContent = "!נכון 🎉";
       quizFeedbackText.style.color = "var(--color-success)";
+      quizFeedback.classList.remove("hidden");
+      quizNextBtn.classList.remove("hidden");
+      Audio.speakEnglish(correctWord);
     } else {
+      // Wrong — shake the button, mark it out, let them try again
       btn.classList.add("wrong");
-      quizFeedbackText.textContent = correctEmoji + " " + correctHe + " ✓";
-      quizFeedbackText.style.color = "var(--color-error)";
-    }
+      btn.classList.add("disabled");
+      btn.style.pointerEvents = "none";
 
-    // Pronounce the correct English word
-    Audio.speakEnglish(correctWord);
-    quizFeedback.classList.remove("hidden");
+      quizFeedbackText.textContent = "🙁 ...נסה שוב";
+      quizFeedbackText.style.color = "var(--color-error)";
+      quizFeedback.classList.remove("hidden");
+      quizNextBtn.classList.add("hidden");
+
+      // Re-pronounce the word to help them
+      Audio.speakEnglish(correctWord);
+
+      // Hide the "try again" message after a moment
+      setTimeout(function () {
+        if (!quizAnswered) {
+          quizFeedback.classList.add("hidden");
+        }
+      }, 1500);
+    }
   }
 
   function nextQuizQuestion() {
