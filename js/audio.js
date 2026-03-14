@@ -6,7 +6,7 @@ var Audio = (function () {
   "use strict";
 
   var synth = window.speechSynthesis;
-  var RATE = 0.8;
+  var RATE = 0.7;
   var PITCH = 1.0;
   var audioCtx = null;
   var preferredVoice = null;
