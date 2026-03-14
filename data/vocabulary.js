@@ -95,16 +95,16 @@ const VOCABULARY = [
       { word: "eight", translation: "שמונה", example: "An octopus has eight arms.", emoji: "8️⃣" },
       { word: "nine", translation: "תשע", example: "I am nine years old.", emoji: "9️⃣" },
       { word: "ten", translation: "עשר", example: "I have ten fingers.", emoji: "🔟" },
-      { word: "eleven", translation: "אחת עשרה", example: "I see eleven birds.", emoji: "🔢" },
-      { word: "twelve", translation: "שתים עשרה", example: "There are twelve months.", emoji: "🔢" },
-      { word: "thirteen", translation: "שלוש עשרה", example: "I have thirteen crayons.", emoji: "🔢" },
-      { word: "fourteen", translation: "ארבע עשרה", example: "I see fourteen flowers.", emoji: "🔢" },
-      { word: "fifteen", translation: "חמש עשרה", example: "I count fifteen stars.", emoji: "🔢" },
-      { word: "sixteen", translation: "שש עשרה", example: "There are sixteen kids.", emoji: "🔢" },
-      { word: "seventeen", translation: "שבע עשרה", example: "I have seventeen books.", emoji: "🔢" },
-      { word: "eighteen", translation: "שמונה עשרה", example: "I see eighteen fish.", emoji: "🔢" },
-      { word: "nineteen", translation: "תשע עשרה", example: "There are nineteen cups.", emoji: "🔢" },
-      { word: "twenty", translation: "עשרים", example: "I can count to twenty!", emoji: "🔢" }
+      { word: "eleven", translation: "אחת עשרה", example: "I see eleven birds.", emoji: "1️⃣1️⃣" },
+      { word: "twelve", translation: "שתים עשרה", example: "There are twelve months.", emoji: "1️⃣2️⃣" },
+      { word: "thirteen", translation: "שלוש עשרה", example: "I have thirteen crayons.", emoji: "1️⃣3️⃣" },
+      { word: "fourteen", translation: "ארבע עשרה", example: "I see fourteen flowers.", emoji: "1️⃣4️⃣" },
+      { word: "fifteen", translation: "חמש עשרה", example: "I count fifteen stars.", emoji: "1️⃣5️⃣" },
+      { word: "sixteen", translation: "שש עשרה", example: "There are sixteen kids.", emoji: "1️⃣6️⃣" },
+      { word: "seventeen", translation: "שבע עשרה", example: "I have seventeen books.", emoji: "1️⃣7️⃣" },
+      { word: "eighteen", translation: "שמונה עשרה", example: "I see eighteen fish.", emoji: "1️⃣8️⃣" },
+      { word: "nineteen", translation: "תשע עשרה", example: "There are nineteen cups.", emoji: "1️⃣9️⃣" },
+      { word: "twenty", translation: "עשרים", example: "I can count to twenty!", emoji: "2️⃣0️⃣" }
     ]
   },
   {
