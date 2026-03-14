@@ -6,8 +6,8 @@ var Audio = (function () {
   "use strict";
 
   var synth = window.speechSynthesis;
-  var RATE_WORD = 0.85;
-  var RATE_SENTENCE = 0.9;
+  var RATE_WORD = 0.6;
+  var RATE_SENTENCE = 0.7;
   var PITCH = 1.0;
   var audioCtx = null;
   var enVoice = null;
