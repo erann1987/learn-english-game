@@ -1,54 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Learn English — Vocabulary Flashcards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>🎓 למד אנגלית — Learn English!</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <!-- Celebration overlay -->
+  <div id="celebration" class="celebration hidden" aria-hidden="true"></div>
+
   <header>
-    <h1>📚 Learn English</h1>
-    <p class="subtitle">Vocabulary Flashcards</p>
+    <h1>🎓 !Learn English</h1>
+    <p class="subtitle">בוא נלמד אנגלית!</p>
   </header>
 
   <main>
+    <!-- Home Screen: Category Selection -->
     <section id="category-selector">
-      <h2>Choose a Category</h2>
+      <h2>בחר נושא 📖</h2>
       <div id="category-buttons" class="category-grid"></div>
     </section>
 
+    <!-- Mode Selection -->
+    <section id="mode-selector" class="hidden">
+      <button id="mode-back-btn" class="btn btn-back">← חזרה</button>
+      <h2 id="mode-title"></h2>
+      <div class="mode-grid">
+        <button class="mode-btn" data-mode="flashcards">
+          <span class="mode-emoji">🃏</span>
+          <span class="mode-label">כרטיסיות</span>
+          <span class="mode-sublabel">Flashcards</span>
+        </button>
+        <button class="mode-btn" data-mode="quiz">
+          <span class="mode-emoji">🎯</span>
+          <span class="mode-label">חידון</span>
+          <span class="mode-sublabel">Quiz</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Flashcard Mode -->
     <section id="flashcard-area" class="hidden">
       <div class="flashcard-header">
-        <button id="back-btn" class="btn btn-secondary">← Categories</button>
+        <button id="back-btn" class="btn btn-back">← חזרה</button>
         <span id="progress-label" class="progress-label"></span>
       </div>
 
-      <div id="flashcard" class="flashcard" tabindex="0">
+      <div id="flashcard" class="flashcard" tabindex="0" role="button" aria-label="Flip card">
         <div class="flashcard-inner">
           <div class="flashcard-front">
+            <span id="card-emoji" class="card-emoji"></span>
             <span id="word-text" class="word-text"></span>
+            <button id="hear-front-btn" class="btn btn-hear" aria-label="Hear word">🔊</button>
           </div>
           <div class="flashcard-back">
+            <span id="back-emoji" class="card-emoji"></span>
             <span id="translation-text" class="translation-text"></span>
             <p id="example-text" class="example-text"></p>
+            <button id="hear-back-btn" class="btn btn-hear" aria-label="Hear example">🔊</button>
           </div>
         </div>
       </div>
 
       <div class="controls">
-        <button id="prev-btn" class="btn">← Previous</button>
-        <button id="flip-btn" class="btn btn-primary">Flip</button>
-        <button id="next-btn" class="btn">Next →</button>
+        <button id="prev-btn" class="btn btn-nav">⬅️</button>
+        <button id="flip-btn" class="btn btn-primary">🔄 הפוך</button>
+        <button id="next-btn" class="btn btn-nav">➡️</button>
       </div>
 
       <div class="progress-bar-container">
         <div id="progress-bar" class="progress-bar"></div>
       </div>
     </section>
+
+    <!-- Quiz Mode -->
+    <section id="quiz-area" class="hidden">
+      <div class="flashcard-header">
+        <button id="quiz-back-btn" class="btn btn-back">← חזרה</button>
+        <span id="quiz-score" class="progress-label">⭐ 0</span>
+      </div>
+
+      <div class="quiz-prompt">
+        <span id="quiz-emoji" class="quiz-emoji"></span>
+        <p class="quiz-instruction">?מה המילה באנגלית</p>
+        <span id="quiz-word-he" class="quiz-word-he"></span>
+        <button id="quiz-hear-btn" class="btn btn-hear btn-hear-large hidden" aria-label="Hear word">🔊 שמע</button>
+      </div>
+
+      <div id="quiz-choices" class="quiz-choices"></div>
+
+      <div id="quiz-feedback" class="quiz-feedback hidden">
+        <span id="quiz-feedback-text"></span>
+        <button id="quiz-next-btn" class="btn btn-primary btn-large">הבא ➡️</button>
+      </div>
+    </section>
   </main>
 
   <script src="data/vocabulary.js"></script>
+  <script src="js/audio.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
