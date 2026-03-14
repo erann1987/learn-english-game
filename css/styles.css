@@ -120,6 +120,57 @@ h2 {
   box-shadow: var(--shadow-hover);
 }
 
+/* ---------- Level Selector ---------- */
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.level-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 1.5rem 1rem;
+  border: 3px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  cursor: pointer;
+  min-height: 140px;
+  transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: var(--shadow);
+}
+
+.level-btn:hover,
+.level-btn:active {
+  border-color: var(--color-primary);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: var(--shadow-hover);
+}
+
+.level-emoji {
+  font-size: 2rem;
+}
+
+.level-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.level-desc {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.level-desc-en {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  direction: ltr;
+}
+
 /* ---------- Mode Selector ---------- */
 .mode-grid {
   display: grid;

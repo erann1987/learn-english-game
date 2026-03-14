@@ -34,9 +34,29 @@
   </header>
 
   <main>
+    <!-- Level Selection -->
+    <section id="level-selector">
+      <h2>בחר שלב 🎮</h2>
+      <div class="level-grid">
+        <button class="level-btn" data-level="1">
+          <span class="level-emoji">⭐</span>
+          <span class="level-title">שלב 1</span>
+          <span class="level-desc">מילים בסיסיות</span>
+          <span class="level-desc-en">Basic Words</span>
+        </button>
+        <button class="level-btn" data-level="2">
+          <span class="level-emoji">⭐⭐</span>
+          <span class="level-title">שלב 2</span>
+          <span class="level-desc">מילים מתקדמות</span>
+          <span class="level-desc-en">Advanced Words</span>
+        </button>
+      </div>
+    </section>
+
     <!-- Home Screen: Category Selection -->
-    <section id="category-selector">
-      <h2>בחר נושא 📖</h2>
+    <section id="category-selector" class="hidden">
+      <button id="level-back-btn" class="btn btn-back">← שלבים</button>
+      <h2 id="category-title">בחר נושא 📖</h2>
       <div id="category-buttons" class="category-grid"></div>
     </section>
 
@@ -117,6 +137,7 @@
 
   <script src="js/auth.js"></script>
   <script src="data/vocabulary.js"></script>
+  <script src="data/vocabulary-l2.js"></script>
   <script src="js/audio.js"></script>
   <script src="js/app.js"></script>
 </body>

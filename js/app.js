@@ -2,6 +2,14 @@
 (function () {
   "use strict";
 
+  // ---- Level data map ----
+  var LEVELS = {
+    1: VOCABULARY,
+    2: VOCABULARY_L2
+  };
+  var currentLevel = null;
+  var currentVocabulary = null;
+
   // ---- State ----
   var currentCategory = null;
   var currentIndex = 0;
@@ -13,8 +21,11 @@
   var touchStartX = 0;
 
   // ---- DOM refs ----
+  var levelSelector = document.getElementById("level-selector");
   var categorySelector = document.getElementById("category-selector");
+  var categoryTitle = document.getElementById("category-title");
   var categoryButtons = document.getElementById("category-buttons");
+  var levelBackBtn = document.getElementById("level-back-btn");
   var modeSelector = document.getElementById("mode-selector");
   var modeTitle = document.getElementById("mode-title");
   var flashcardArea = document.getElementById("flashcard-area");
@@ -47,14 +58,23 @@
 
   // ---- Init ----
   function init() {
-    renderCategories();
     bindEvents();
+  }
+
+  // ---- Level selection ----
+  function selectLevel(level) {
+    currentLevel = level;
+    currentVocabulary = LEVELS[level];
+    renderCategories();
+    showScreen("categories");
   }
 
   // ---- Render categories ----
   function renderCategories() {
     categoryButtons.innerHTML = "";
-    VOCABULARY.forEach(function (cat) {
+    var levelLabel = currentLevel === 1 ? "⭐ שלב 1" : "⭐⭐ שלב 2";
+    categoryTitle.textContent = levelLabel + " — בחר נושא 📖";
+    currentVocabulary.forEach(function (cat) {
       var btn = document.createElement("button");
       btn.className = "category-btn";
       btn.innerHTML =
@@ -77,13 +97,16 @@
 
   // ---- Screen management ----
   function showScreen(screen) {
+    levelSelector.classList.add("hidden");
     categorySelector.classList.add("hidden");
     modeSelector.classList.add("hidden");
     flashcardArea.classList.add("hidden");
     quizArea.classList.add("hidden");
     Audio.stop();
 
-    if (screen === "home") {
+    if (screen === "levels") {
+      levelSelector.classList.remove("hidden");
+    } else if (screen === "categories") {
       categorySelector.classList.remove("hidden");
     } else if (screen === "mode") {
       modeSelector.classList.remove("hidden");
@@ -305,7 +328,7 @@
 
   function getAllWordsExcept(excludeWord) {
     var all = [];
-    VOCABULARY.forEach(function (cat) {
+    currentVocabulary.forEach(function (cat) {
       cat.words.forEach(function (w) {
         if (w.word !== excludeWord) all.push(w);
       });
@@ -327,6 +350,16 @@
 
   // ---- Events ----
   function bindEvents() {
+    // Level selection
+    document.querySelectorAll(".level-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        selectLevel(parseInt(btn.getAttribute("data-level"), 10));
+      });
+    });
+
+    // Back from categories to levels
+    levelBackBtn.addEventListener("click", function () { showScreen("levels"); });
+
     // Mode selection
     document.querySelectorAll(".mode-btn").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -341,7 +374,7 @@
     prevBtn.addEventListener("click", prevCard);
     flipBtn.addEventListener("click", flipCard);
     backBtn.addEventListener("click", function () { showScreen("mode"); });
-    modeBackBtn.addEventListener("click", function () { showScreen("home"); });
+    modeBackBtn.addEventListener("click", function () { showScreen("categories"); });
     quizBackBtn.addEventListener("click", function () { showScreen("mode"); });
     quizNextBtn.addEventListener("click", nextQuizQuestion);
 
