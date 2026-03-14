@@ -212,24 +212,28 @@
       var buttons = quizChoices.querySelectorAll(".quiz-choice-btn");
       buttons.forEach(function (b) { b.classList.add("disabled"); });
 
+      Audio.playCorrect();
       quizFeedbackText.textContent = "!נכון 🎉";
       quizFeedbackText.style.color = "var(--color-success)";
       quizFeedback.classList.remove("hidden");
       quizNextBtn.classList.remove("hidden");
-      Audio.speakEnglish(correctWord);
+
+      // Pronounce the word after the chime
+      setTimeout(function () { Audio.speakEnglish(correctWord); }, 500);
     } else {
       // Wrong — shake the button, mark it out, let them try again
       btn.classList.add("wrong");
       btn.classList.add("disabled");
       btn.style.pointerEvents = "none";
 
+      Audio.playWrong();
       quizFeedbackText.textContent = "🙁 ...נסה שוב";
       quizFeedbackText.style.color = "var(--color-error)";
       quizFeedback.classList.remove("hidden");
       quizNextBtn.classList.add("hidden");
 
-      // Re-pronounce the word to help them
-      Audio.speakEnglish(correctWord);
+      // Re-pronounce the word after the buzz to help them
+      setTimeout(function () { Audio.speakEnglish(correctWord); }, 500);
 
       // Hide the "try again" message after a moment
       setTimeout(function () {
